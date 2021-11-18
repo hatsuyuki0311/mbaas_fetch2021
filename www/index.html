@@ -31,7 +31,6 @@
           $("#message").html("Failed to create new object, with error code: " + JSON.stringify(err));
         })
     }
-
     function fetch() {
       var TestClass = ncmb.DataStore("FetchTest");
       TestClass.fetch()
@@ -40,6 +39,13 @@
           var update = results.get("updateDate");
           $("#message").html(data + ":" + update);
         })
+    }
+
+    function fetch() {
+       var TestClass = ncmb.DataStore("FetchTest");
+      TestClass.fetchAll()
+        .then(function(results) {
+          var data = results[0].get("text");
     }
   </script>
 </head>
@@ -53,6 +59,7 @@
   <div id="button">
     <button id="btnA" class="btn" onclick="register()">Register</button>
     <button id="btnB" class="btn" onclick="fetch()">Fetch</button>
+    <button id="btnC" class="btn" onclick="fetchAll()">Fetch All</button>
   </div>
   <div id="message">message area</div>
 </body>
