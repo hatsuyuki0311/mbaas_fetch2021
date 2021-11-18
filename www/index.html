@@ -41,11 +41,18 @@
         })
     }
 
-    function fetch() {
+    function fetchAll() {
        var TestClass = ncmb.DataStore("FetchTest");
       TestClass.fetchAll()
         .then(function(results) {
-          var data = results[0].get("text");
+          var msg="";
+          for(var i=0;i<results.length;i++){
+            var data = results[i].get("text");
+            var update=results[i].get("updateDate");
+            msg+=data+":"+update;
+          }
+           $("#message").html(msg);
+        })
     }
   </script>
 </head>
